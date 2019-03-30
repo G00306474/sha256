@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 
 //Repersents a message block
 union msgblock { 
@@ -43,13 +44,16 @@ int main(int argc, char *argv[]){
   //Open file given as first command line argument.
   FILE* fi;
   fi  = fopen(argv[1], "r");
-  //Add Error Checking HERE!!!  
+  //if given empty file prints error. Otherwise passes file to sha256.  
+  if( access( argv[1], F_OK) != -1){
+    //Run the secure hash algo on the file. 
+    sha256(fi);
+    //Close the file
+    fclose(fi);
+  }else {
+    printf("File doesnt exist\n");
 
-  //Run the secure hash algo on the file. 
-  sha256(fi);
-
-  //Close the file 
-  fclose(fi);
+  }
   return 0;
 }
 
