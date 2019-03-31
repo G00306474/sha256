@@ -83,6 +83,7 @@ SHA 256 works by reading blocks in sizes of 512 with the final 64 bits of the la
 [Source](https://tools.ietf.org/html/rfc4634#page-6)
 
 Hash computation
+
 First, eight variables are set to their initial values, given by the first 32 bits of the fractional part
 of the square roots of the first 8 prime numbers:
 H1(0)= 0x6a09e667 
